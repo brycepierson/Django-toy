@@ -8,4 +8,6 @@ urlpatterns = [
     path("", views.index, name="index"),
     # ex: /polls/5/
     path("<int:monster_id>/", views.detail, name="detail"),
+
+    path("question/", views.question, name="question"),
 ]
