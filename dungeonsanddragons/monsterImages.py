@@ -14,16 +14,6 @@ def validateMonsterImageDirectory():
 
     return True, ""
 
-def updateMonsterImageDirectory():
-    os.makedirs(imageDirPath, exist_ok=True)
-
-    for monster in Monster.objects.all():
-        os.mkdir(os.path.join(imageDirPath, monster.id))
-    return 
-
-def deleteMonsterImageDirectory():
-    return imageDirPath
-
 def existsDirForEachMonster():
     for monster in Monster.objects.all():
         if not os.path.exists(os.path.join(imageDirPath, monster.id)):

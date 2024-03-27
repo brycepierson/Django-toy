@@ -1,15 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Monster
 from django.conf import settings
-from .monsterImages import validateMonsterImageDirectory, deleteMonsterImageDirectory, updateMonsterImageDirectory, imageDirPath
+from .monsterImages import validateMonsterImageDirectory, imageDirPath
 # Create your views here.
 
 def index(request):
     apikey = settings.API_KEY
     isValid, error = validateMonsterImageDirectory()
-    if not isValid:
-        updateMonsterImageDirectory()
-    return render(request, "dungeonsanddragons/index.html", {"apikey": apikey,})
+
+    return render(request, "dungeonsanddragons/index.html", {"apikey": apikey, "error": error})
 
 def question(request):
     return render(request, "dungeonsanddragons/question.html", {})
